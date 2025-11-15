@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel - Inventario Mcortez</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<nav class="navbar navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand" href="#">Inventario Mcortez</a>
+</div>
+</nav>
+
+
+<div class="container mt-4">
+
+
+<h3>Gestión de Equipos</h3>
+<div class="card p-3 shadow-sm mb-4">
+<form>
+<div class="row g-3">
+<div class="col-md-4">
+<label class="form-label">Tipo</label>
+<select class="form-select">
+<option>PC</option>
+<option>Periférico</option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label">Marca</label>
+<input type="text" class="form-control">
+</div>
+<div class="col-md-4">
+<label class="form-label">Estado</label>
+<select class="form-select">
+<option>Operativo</option>
+<option>En reparación</option>
+<option>Baja</option>
+</select>
+</div>
+<div class="col-md-4">
+<label class="form-label">Responsable</label>
+<input type="text" class="form-control">
+</div>
+<div class="col-md-4">
+<label class="form-label">Ubicación</label>
+<input type="text" class="form-control">
+</div>
+<div class="col-md-4 d-flex align-items-end">
+<button class="btn btn-primary w-100">Registrar</button>
+</div>
+</div>
+</form>
+</div>
+
+
+<h4>Listado de Equipos</h4>
+<table class="table table-bordered table-striped">
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Tipo</th>
+<th>Marca</th>
+<th>Estado</th>
+<th>Responsable</th>
+<th>Ubicación</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody id="tablaEquipos">
+<!-- Aquí se cargarán los datos via JS -->
+</tbody>
+</table>
+
+
+</div>
+
+
+</body>
+</html>
