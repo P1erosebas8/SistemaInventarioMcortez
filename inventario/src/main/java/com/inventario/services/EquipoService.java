@@ -1,11 +1,18 @@
 package com.inventario.services;
 
-import java.util.List;
 import com.inventario.model.Equipo;
 
+import java.util.List;
+
 public interface EquipoService {
-Equipo save(Equipo e);
-List<Equipo> findAll();
-Equipo update(Long id, Equipo e);
-void delete(Long id);
+
+    void guardarEquipo(Equipo equipo);
+
+    List<Equipo> listarEquipos();
+
+    Equipo obtenerPorId(Long id);
+
+    void eliminarEquipo(Long id);
+
+    List<Equipo> buscarPorNombreOCodigo(String filtro);
 }

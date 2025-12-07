@@ -1,40 +1,42 @@
 package com.inventario.services;
 
-import java.util.List;
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
 import com.inventario.model.Equipo;
 import com.inventario.repository.EquipoRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class EquipoServiceImpl implements EquipoService {
 
     private final EquipoRepository equipoRepository;
 
-    @Override
-    public Equipo save(Equipo e) {
-        return equipoRepository.save(e);
+    public EquipoServiceImpl(EquipoRepository equipoRepository) {
+        this.equipoRepository = equipoRepository;
     }
 
     @Override
-    public List<Equipo> findAll() {
+    public void guardarEquipo(Equipo equipo) {
+        equipoRepository.save(equipo);
+    }
+
+    @Override
+    public List<Equipo> listarEquipos() {
         return equipoRepository.findAll();
     }
 
     @Override
-    public Equipo update(Long id, Equipo e) {
-        Equipo actual = equipoRepository.findById(id).orElseThrow();
-        actual.setTipo(e.getTipo());
-        actual.setMarca(e.getMarca());
-        actual.setEstado(e.getEstado());
-        actual.setResponsable(e.getResponsable());
-        actual.setUbicacion(e.getUbicacion());
-        return equipoRepository.save(actual);
+    public Equipo obtenerPorId(Long id) {
+        return equipoRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void eliminarEquipo(Long id) {
         equipoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Equipo> buscarPorNombreOCodigo(String filtro) {
+        return equipoRepository.findByNombreContainingIgnoreCaseOrCodigoContainingIgnoreCase(filtro, filtro);
     }
 }

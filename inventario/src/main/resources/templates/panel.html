@@ -1,84 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel - Inventario Mcortez</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Panel de Control - Inventario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="/logo_main.png" type="image/png">
+
 </head>
-<body>
 
+<body class="d-flex min-vh-100 bg-light">
 
-<nav class="navbar navbar-dark bg-dark">
-<div class="container-fluid">
-<a class="navbar-brand" href="#">Inventario Mcortez</a>
-</div>
-</nav>
+    <div class="text-white d-flex flex-column flex-shrink-0 p-3" style="width: 250px; background-color: #2a3b8f;">
+        <h4 class="text-center mb-4 border-bottom pb-3">
+            <i class="bi bi-layers-half"></i> Inventario TI
+        </h4>
 
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item mb-2"><a href="/panel" class="nav-link active text-white bg-white bg-opacity-25"><i class="bi bi-house-door me-2"></i>Inicio</a></li>
+            <li class="nav-item mb-2"><a href="/equipos" class="nav-link text-white"><i class="bi bi-laptop me-2"></i>Equipos</a></li>
+            <li class="nav-item mb-2"><a href="/usuarios" class="nav-link text-white"><i class="bi bi-people me-2"></i>Usuarios</a></li>
+            <li class="nav-item mb-2"><a href="/reportes" class="nav-link text-white"><i class="bi bi-bar-chart me-2"></i>Reportes</a></li>
+            <li class="nav-item mt-auto">
+                <a href="/logout" class="nav-link text-white"><i class="bi bi-box-arrow-left me-2"></i>Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
 
-<div class="container mt-4">
+    <div class="flex-grow-1 overflow-auto">
+        
+        <nav class="navbar bg-white shadow-sm px-4 mb-4">
+            <span class="navbar-text">
+                <h1 class="h4 m-0 text-dark">Panel de Control</h1>
+            </span>
+            <div class="text-muted small">
+                Bienvenido al sistema
+            </div>
+        </nav>
 
+        <div class="container-fluid px-4">
+            
+            <div class="row g-4 mb-4">
+                
+                <div class="col-md-6 col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3 text-primary">
+                                <i class="bi bi-laptop fs-1"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1">Total Equipos</h6>
+                                <h2 class="fw-bold mb-0" th:text="${totalEquipos}">0</h2>
+                            </div>
+                            <a href="/equipos" class="btn btn-outline-primary ms-auto btn-sm rounded-pill">Ver lista <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-<h3>Gestión de Equipos</h3>
-<div class="card p-3 shadow-sm mb-4">
-<form>
-<div class="row g-3">
-<div class="col-md-4">
-<label class="form-label">Tipo</label>
-<select class="form-select">
-<option>PC</option>
-<option>Periférico</option>
-</select>
-</div>
-<div class="col-md-4">
-<label class="form-label">Marca</label>
-<input type="text" class="form-control">
-</div>
-<div class="col-md-4">
-<label class="form-label">Estado</label>
-<select class="form-select">
-<option>Operativo</option>
-<option>En reparación</option>
-<option>Baja</option>
-</select>
-</div>
-<div class="col-md-4">
-<label class="form-label">Responsable</label>
-<input type="text" class="form-control">
-</div>
-<div class="col-md-4">
-<label class="form-label">Ubicación</label>
-<input type="text" class="form-control">
-</div>
-<div class="col-md-4 d-flex align-items-end">
-<button class="btn btn-primary w-100">Registrar</button>
-</div>
-</div>
-</form>
-</div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3 text-success">
+                                <i class="bi bi-people fs-1"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1">Usuarios Registrados</h6>
+                                <h2 class="fw-bold mb-0" th:text="${totalUsuarios}">0</h2>
+                            </div>
+                            <a href="/usuarios" class="btn btn-outline-success ms-auto btn-sm rounded-pill">Gestionar <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <h5 class="mb-3 text-muted">Accesos Rápidos</h5>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <a href="/equipos" class="text-decoration-none">
+                        <div class="card shadow-sm border-0 hover-effect p-3 text-center">
+                            <i class="bi bi-plus-circle fs-2 text-primary mb-2"></i>
+                            <h6 class="text-dark">Registrar Nuevo Equipo</h6>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/usuarios" class="text-decoration-none">
+                        <div class="card shadow-sm border-0 hover-effect p-3 text-center">
+                            <i class="bi bi-person-plus fs-2 text-warning mb-2"></i>
+                            <h6 class="text-dark">Crear Usuario</h6>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/reportes" class="text-decoration-none">
+                        <div class="card shadow-sm border-0 hover-effect p-3 text-center">
+                            <i class="bi bi-file-earmark-pdf fs-2 text-danger mb-2"></i>
+                            <h6 class="text-dark">Generar Reporte</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-<h4>Listado de Equipos</h4>
-<table class="table table-bordered table-striped">
-<thead class="table-dark">
-<tr>
-<th>ID</th>
-<th>Tipo</th>
-<th>Marca</th>
-<th>Estado</th>
-<th>Responsable</th>
-<th>Ubicación</th>
-<th>Acciones</th>
-</tr>
-</thead>
-<tbody id="tablaEquipos">
-<!-- Aquí se cargarán los datos via JS -->
-</tbody>
-</table>
-
-
-</div>
-
-
+        </div>
+    </div>
 </body>
 </html>

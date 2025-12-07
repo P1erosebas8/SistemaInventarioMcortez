@@ -1,47 +1,50 @@
 package com.inventario.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
+@Table(name = "equipos")
 public class Equipo {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-private String tipo; 
-private String marca;
-private String estado;
-private String responsable;
-private String ubicacion;
+    private String codigo;
+    private String nombre;
+    private String marca;
+    private String modelo;
+    private String serie;
+    private String estado;
+    private String area;
 
-public Equipo() {}
+    @Column(columnDefinition = "TEXT")
+    private String descripcion;
 
-public Equipo(String tipo, String marca, String estado, String responsable, String ubicacion) {
-this.tipo = tipo;
-this.marca = marca;
-this.estado = estado;
-this.responsable = responsable;
-this.ubicacion = ubicacion;
-}
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-public Long getId() { return id; }
-public void setId(Long id) { this.id = id; }
+    public String getCodigo() { return codigo; }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
 
-public String getTipo() { return tipo; }
-public void setTipo(String tipo) { this.tipo = tipo; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-public String getMarca() { return marca; }
-public void setMarca(String marca) { this.marca = marca; }
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
 
-public String getEstado() { return estado; }
-public void setEstado(String estado) { this.estado = estado; }
+    public String getModelo() { return modelo; }
+    public void setModelo(String modelo) { this.modelo = modelo; }
 
-public String getResponsable() { return responsable; }
-public void setResponsable(String responsable) { this.responsable = responsable; }
+    public String getSerie() { return serie; }
+    public void setSerie(String serie) { this.serie = serie; }
 
-public String getUbicacion() { return ubicacion; }
-public void setUbicacion(String ubicacion) { this.ubicacion = ubicacion; }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
+
+    public String getArea() { return area; }
+    public void setArea(String area) { this.area = area; }
+
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 }
